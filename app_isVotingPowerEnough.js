@@ -13,7 +13,7 @@ module.exports.isVotingPowerEnough = async (account_name, limit) => {
         client.database
         .call('get_accounts', [[account_name]])
             .then(result => {
-                console.log("then")
+                //console.log("then")
                 if(result.length > 0){             
               	    let vp = result[0].voting_power + (10000 * ((new Date() - new Date(result[0].last_vote_time + "Z")) / 1000) / 432000);
                     console.log(`vp=${vp}`);

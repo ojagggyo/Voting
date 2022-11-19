@@ -161,17 +161,17 @@ getPosts = async (category, voting_weight, voter, posting_key ) => {
 //コマンドパラメータ取得
 let [category, voting_weight, limit, account_name, posting_key] = process.argv.slice(2)
 if (!category || !voting_weight || !limit || !account_name || !posting_key) {
-    try {
-        const config = JSON.parse(fs.readFileSync("config.json"));    
-        category = config.category;
-        voting_weight = config.voting_weight;
-        limit = config.limit;
-        account_name = config.account_name;
-        posting_key = config.posting_key;
-    } catch (error) {
+    // try {
+    //     const config = JSON.parse(fs.readFileSync("config.json"));    
+    //     category = config.category;
+    //     voting_weight = config.voting_weight;
+    //     limit = config.limit;
+    //     account_name = config.account_name;
+    //     posting_key = config.posting_key;
+    // } catch (error) {
         process.stderr.write(`Usage: ./app.js <category> <voting_weight> <limit> <acount_name> <posting_key>\n`)
         process.exit(1)
-    }
+    // }
 }
 
 
@@ -182,26 +182,26 @@ log(`acount_name=${account_name}`);
 log(`posting_key=非表示`);
 
 async function main(){
-    log(`main start`);
+    //log(`main start`);
     const isEnough = await app_isVotingPowerEnough.isVotingPowerEnough(account_name, Number.parseInt(limit))
     log(`isEnough=${isEnough}`);
     if(isEnough){
         getPosts(category, voting_weight, account_name, dsteem.PrivateKey.fromString(posting_key));
     }
-    log(`main end`);
+    //log(`main end`);
 }
 
-log(`main call before`);
+//log(`main call before`);
 main();
-log(`main call after`);
+//log(`main call after`);
 
 setInterval(
     function(){
-        log(`setInterval start`);
+        //log(`setInterval start`);
         main();
-        log(`setInterval end`);
+        //log(`setInterval end`);
     }, 
     //24 * 60 * 60 * 1000
-    10 * 60 * 1000
+    10 * 60 * 1000//10分ごと
     );
 
