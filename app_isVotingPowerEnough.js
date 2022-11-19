@@ -5,8 +5,8 @@ const client = new dsteem.Client('https://api.steemit.com');
 
 module.exports.isVotingPowerEnough = async (account_name, limit) => { 
 
-    console.log(`account_name=${account_name}`);
-    console.log(`limit=${limit}`);
+    // console.log(`account_name=${account_name}`);
+    // console.log(`limit=${limit}`);
 
     return new Promise((resolve) => {
 
