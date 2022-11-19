@@ -184,7 +184,7 @@ log(`posting_key=非表示`);
 async function main(){
     //log(`main start`);
     const isEnough = await app_isVotingPowerEnough.isVotingPowerEnough(account_name, Number.parseInt(limit))
-    log(`isEnough=${isEnough}`);
+    //log(`isEnough=${isEnough}`);
     if(isEnough){
         getPosts(category, voting_weight, account_name, dsteem.PrivateKey.fromString(posting_key));
     }
