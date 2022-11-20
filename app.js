@@ -1,8 +1,9 @@
 const dsteem = require('dsteem');
 const fs = require('fs');
 const app_isVotingPowerEnough = require('./app_isVotingPowerEnough.js')
-const client = new dsteem.Client('https://api.steemit.com');
-
+//const client = new dsteem.Client('https://api.steemit.com');
+//const client = new dsteem.Client('http://192.168.3.6:8080');
+const client = new dsteem.Client('https://api.steememory.com');
 
 submitVote = async (account_name, privateKey , author, permlink, voting_weight) => {
 
@@ -135,9 +136,6 @@ getPosts = async (category, voting_weight, voter, posting_key ) => {
                 multipleList.push(author);
                 continue;
             }
-
-
-
                
             var body = post.body;
             body = body.replace(/!\[.*\]\(.*\)/g, '画像削除');//画像削除
@@ -182,24 +180,17 @@ log(`acount_name=${account_name}`);
 log(`posting_key=非表示`);
 
 async function main(){
-    //log(`main start`);
     const isEnough = await app_isVotingPowerEnough.isVotingPowerEnough(account_name, Number.parseInt(limit))
-    //log(`isEnough=${isEnough}`);
     if(isEnough){
         getPosts(category, voting_weight, account_name, dsteem.PrivateKey.fromString(posting_key));
     }
-    //log(`main end`);
 }
 
-//log(`main call before`);
 main();
-//log(`main call after`);
 
 setInterval(
     function(){
-        //log(`setInterval start`);
         main();
-        //log(`setInterval end`);
     }, 
     //24 * 60 * 60 * 1000
     10 * 60 * 1000//10分ごと

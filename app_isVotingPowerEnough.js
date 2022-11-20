@@ -1,7 +1,7 @@
 const dsteem = require('dsteem');
-
-//connect to server which is connected to the network/production
-const client = new dsteem.Client('https://api.steemit.com');
+//const client = new dsteem.Client('https://api.steemit.com');
+//const client = new dsteem.Client('http://192.168.3.6:8080');
+const client = new dsteem.Client('https://api.steememory.com');
 
 module.exports.isVotingPowerEnough = async (account_name, limit) => { 
 
