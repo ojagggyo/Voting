@@ -51,7 +51,7 @@ getPosts = async (category, voting_weight, voter, posting_key ) => {
         "stikg",
         "kan6034",
         "tama.arin",
-        "nell5630",
+        //"nell5630",//コピー写真
         "eunjjjjjjjj",
         "ggagu",
         "stikg",
