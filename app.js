@@ -59,6 +59,7 @@ getPosts = async (category, voting_weight, voter, posting_key ) => {
         "youngdeuk",
         "lyh5926",
         "tomota",
+        "maejiman",
     
     ];
 
