@@ -86,7 +86,7 @@ getPosts = async (category, voting_weight, voter, posting_key ) => {
         
             //const json = JSON.parse(post.json_metadata);
             //const image = json.image ? json.image[0] : '';
-            const posting_json_metadata = JSON.parse(post.posting_json_metadata);           
+            //const posting_json_metadata = JSON.parse(post.posting_json_metadata);           
 
             const title = post.title;
             const author = post.author;
@@ -128,11 +128,11 @@ getPosts = async (category, voting_weight, voter, posting_key ) => {
                 continue;
             }
 
-            //2022.12.31
-            if(!posting_json_metadata){
-                log(`${author.padEnd(20, '_')} プロフィール写真がない`)
-                continue;
-            }
+            // //2022.12.31
+            // if(!posting_json_metadata){
+            //     log(`${author.padEnd(20, '_')} プロフィール写真がない`)
+            //     continue;
+            // }
 
             //自分voterがvote済みか確認する
             const active_votes = post.active_votes;
