@@ -84,8 +84,10 @@ getPosts = async (category, voting_weight, voter, posting_key ) => {
 
             let post = result[i];
         
-            const json = JSON.parse(post.json_metadata);
-            const image = json.image ? json.image[0] : '';
+            //const json = JSON.parse(post.json_metadata);
+            //const image = json.image ? json.image[0] : '';
+            const posting_json_metadata = JSON.parse(post.posting_json_metadata);           
+
             const title = post.title;
             const author = post.author;
             const created = new Date(post.created + "z");
@@ -123,6 +125,12 @@ getPosts = async (category, voting_weight, voter, posting_key ) => {
             }
             if(!whiteList_umu){
                 log(`${author.padEnd(20, '_')} ホワイトリストにない`)
+                continue;
+            }
+
+            //2022.12.31
+            if(!posting_json_metadata){
+                log(`${author.padEnd(20, '_')} プロフィール写真がない`)
                 continue;
             }
 
