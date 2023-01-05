@@ -60,7 +60,7 @@ getPosts = async (category, voting_weight, voter, posting_key ) => {
         "lyh5926",
         "tomota",
         "maejiman",
-    
+        "caferoman",
     ];
 
     const filter = "created";
