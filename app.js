@@ -51,7 +51,7 @@ getPosts = async (category, voting_weight, voter, posting_key ) => {
         "stikg",
         "kan6034",
         "tama.arin",
-        //"nell5630",//コピー写真
+        "nell5630",//コピー写真
         "eunjjjjjjjj",
         "ggagu",
         "stikg",
@@ -60,8 +60,12 @@ getPosts = async (category, voting_weight, voter, posting_key ) => {
         "lyh5926",
         "tomota",
         "maejiman",
-        "caferoman",
+        "caferoman",//他人へUPVOTEしない
     ];
+
+    const grayList = [
+        "caferoman",//他人へUPVOTEしない
+    ];  
 
     const filter = "created";
     const query = {
@@ -154,6 +158,9 @@ getPosts = async (category, voting_weight, voter, posting_key ) => {
 
             if(whiteList_umu){
                 log("アップボートする %s", author);
+                if(-1 < grayList.indexOf(author)){
+                    voting_weight = 5;
+                }
                 let res = await submitVote(voter, posting_key , author, permlink, voting_weight);
                 log(res);
                 multipleList.push(author);
